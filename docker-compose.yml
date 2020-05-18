@@ -1,0 +1,35 @@
+version: "3"
+services:
+  # MondoDB
+  db:
+    image: mongo:latest
+    container_name: db_container
+    restart: always
+    ports:
+      - ${DB_PORT}:27017
+    environment:
+      MONGO_INITDB_DATABASE: ${DB_NAME}
+      MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASS}
+
+  # FastAPI
+  api:
+    # image: python:3.8-slim-buster
+    image: python:3.8
+    container_name: api_container
+    restart: always
+    env_file:
+      - .env
+    depends_on:
+      - db
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+    volumes:
+      - .:/usr/src/eXchangeAPI/
+    working_dir: /usr/src/eXchangeAPI
+    command: sh commands.sh
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
