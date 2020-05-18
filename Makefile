@@ -1,6 +1,6 @@
 include .env
 
-.PHONY: default server debug test flake8 dkup dkstop dkdown dkdownv dkdownrmi dklogs dkimages dkps
+.PHONY: default server debug test flake8 dkup dkbuild dkstop dkdown dkdownv dkdownrmi dklogs dkimages dkps 
 
 default:
 	@echo "Default:"
@@ -10,7 +10,10 @@ default:
 ############################
 
 dkup:
-	docker-compose -f docker-compose.yml up -d --build --force-recreate
+	docker-compose -f docker-compose.yml up -d
+	
+dkbuild:
+	docker-compose -f docker-compose.yml --build --force-recreate
 	
 dkstop:
 	# Stop services only
