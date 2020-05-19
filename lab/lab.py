@@ -18,8 +18,18 @@ from pymongo import MongoClient
 from random import randint
 
 # Step 1: Connect to MongoDB - Note: Change connection string as needed
-client = MongoClient("mongodb://localhost:27017")
-db = client.business
+MONGO_HOST = "127.0.0.1"
+MONGO_PORT = "27017"
+MONGO_DB = "lab"
+MONGO_USER = "lab"
+MONGO_PASS = "lab"
+
+uri = "mongodb://{}:{}@{}:{}/{}".format(
+    MONGO_USER, MONGO_PASS, MONGO_HOST, MONGO_PORT, MONGO_DB
+)
+conn = MongoClient(uri)
+db = conn.lab
+
 # Step 2: Create sample data
 names = [
     "Kitchen",
