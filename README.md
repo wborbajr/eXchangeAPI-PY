@@ -64,6 +64,8 @@ main.py - FastAPI application instance, CORS configuration and api router includ
 ### Poetry
 ```
 poetry add "pydantic[email]"
+or
+poetry add pydantic --extra=email
 ```
 
 ### References
