@@ -1,0 +1,21 @@
+[default]
+PROJECT_NAME = "FideLLiTTy"
+
+SECRET_KEY = "123456"
+
+# ALLOWED_HOSTS='"127.0.0.1", "localhost"'
+ALLOWED_HOSTS = '"127.0.0.1", "localhost", "*"'
+
+# Database
+#MONGO_HOST = "127.0.0.1"
+#MONGO_PORT = "27017"
+#MONGO_DB = "lab"
+#MONGO_USER = "lab"
+#MONGO_PASS = "lab"
+MONGODB_URL = "mongodb://lab:lab@127.0.0.1:27017/lab"
+
+MAX_CONNECTIONS_COUNT = 9
+MIN_CONNECTIONS_COUNT = 9
+
+# [development]
+# DATABASE_URL = "sqlite:///:memory:"

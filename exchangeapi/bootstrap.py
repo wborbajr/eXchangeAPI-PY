@@ -2,6 +2,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
 from exchangeapi.routers.routers import router as api_router
+from exchangeapi.db.mongodb_utils import connect_to_mongo, close_mongo_connection
 
 # from pymongo import MongoClient
 
@@ -23,13 +24,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# @app.on_event("startup")
-# async def create_db_client():
-#     # start client here and reuse in future requests
-
-# @app.on_event("shutdown")
-# async def shutdown_db_client():
-#     # stop your client here
+app.add_event_handler("startup", connect_to_mongo)
+app.add_event_handler("shutdown", close_mongo_connection)
 
 # items = {"foo": "The Foo Wrestlers"}
 

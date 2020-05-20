@@ -1,2 +1,26 @@
 __pycache__
 exchangeapi.egg-info
+.git
+.ipynb_checkpoints
+notebooks
+unused
+Dockerfile
+.DS_Store
+.gitignore
+README.md
+LICENSE
+README.rst
+env.*
+devops
+.env.example
+lab/
+tests/
+
+commands.sh
+
+
+# To prevent storing dev/temporary container data
+*.csv
+tmp
+
+logs/
