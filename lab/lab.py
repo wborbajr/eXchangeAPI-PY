@@ -57,7 +57,7 @@ company_cuisine = [
     "Sushi Bar",
     "Vegetarian",
 ]
-for x in range(1, 10000):
+for x in range(1, 500):
     business = {
         "name": names[randint(0, (len(names) - 1))]
         + " "
@@ -68,7 +68,7 @@ for x in range(1, 10000):
         "cuisine": company_cuisine[randint(0, (len(company_cuisine) - 1))],
     }
     # Step 3: Insert business object directly into MongoDB via isnert_one
-    result = db.reviews.insert_one(business)
+    db.reviews.insert_one(business)
     db.items.insert_one(business)
     # Step 4: Print to the console the ObjectID of the new document
     # print("Created {0} of 500 as {1}".format(x, result.inserted_id))

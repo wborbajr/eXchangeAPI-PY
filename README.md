@@ -51,7 +51,6 @@ uvicorn app.main:app --reload
 ```
 
 ### Project structure
-
 Files related to application are in the app directory. alembic is directory with sql migrations. Application parts are:
 ```
 models  - pydantic models that used in crud or handlers
@@ -60,6 +59,16 @@ db      - db specific utils
 core    - some general components (jwt, security, configuration)
 api     - handlers for routes
 main.py - FastAPI application instance, CORS configuration and api router including
+```
+
+### Poetry
+```
+poetry add "pydantic[email]"
+```
+
+### References
+```
+https://dev.to/paurakhsharma/microservice-in-python-using-fastapi-24cc
 ```
 
 ### TO-DO

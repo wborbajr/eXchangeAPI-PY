@@ -7,7 +7,7 @@ from exchangeapi.db.mongodb import db
 
 
 async def connect_to_mongo():
-    logging.info("Connect to the database...")
+    logging.info("Connecting to the database...")
 
     MONGODB_URL = settings.MONGODB_URL
     MAX_CONNECTIONS_COUNT = settings.MAX_CONNECTIONS_COUNT
@@ -24,6 +24,6 @@ async def connect_to_mongo():
 
 
 async def close_mongo_connection():
-    logging.info("Close the database connection...")
+    logging.info("Closing the database connection...")
     db.client.close()
     logging.info("Database connection closed！")
