@@ -1,20 +1,5 @@
-# from pymongo import MongoClient
-
-
-# def mongoConnect():
-#     conn = MongoClient("mongodb://localhost:27017/lab")
-#     return conn
-
-
-# conn = mongoConnect()
-
-# items = conn.items
-
-# for item in items:
-#     print(f"Collection -> {item}")
-
-
 from pymongo import MongoClient
+from pymongo.errors import ConnectionFailure
 from random import randint
 
 # Step 1: Connect to MongoDB - Note: Change connection string as needed
@@ -27,8 +12,14 @@ MONGO_PASS = "lab"
 uri = "mongodb://{}:{}@{}:{}/{}".format(
     MONGO_USER, MONGO_PASS, MONGO_HOST, MONGO_PORT, MONGO_DB
 )
+
 conn = MongoClient(uri)
-db = conn.lab
+
+try:
+    db = conn.lab
+except ConnectionFailure:
+    print("Could not connect to server: %s" % ConnectionFailure)
+
 
 # Step 2: Create sample data
 names = [
