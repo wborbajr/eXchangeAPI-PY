@@ -4,15 +4,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from exchangeapi.routers.routers import router as api_router
 from exchangeapi.db.mongodb_utils import connect_to_mongo, close_mongo_connection
 
-# from pymongo import MongoClient
-
-
-# def mongoConnect():
-#     conn = MongoClient("mongodb://localhost:27017/lab")
-#     return conn
-
-# conn = mongoConnect()
-
 
 app = FastAPI()
 
@@ -26,35 +17,5 @@ app.add_middleware(
 
 app.add_event_handler("startup", connect_to_mongo)
 app.add_event_handler("shutdown", close_mongo_connection)
-
-# items = {"foo": "The Foo Wrestlers"}
-
-
-# @app.get("/")
-# def read_root():
-#     return {"Hello": "Docker ... Yeah! Its working.... 100 %"}
-
-
-# @app.get("/items/{item_id}")
-# async def read_item(item_id: str):
-#     if item_id not in items:
-#         raise HTTPException(status_code=404, detail="Item not found")
-#     return {"item": items[item_id]}
-
-
-# @app.get("/items/", tags=["items"])
-# async def read_items():
-#     return [{"name": "Foo", "price": 42}]
-
-
-# @app.get("/users/", tags=["users"])
-# async def read_users():
-#     return [{"username": "johndoe"}]
-
-
-# @app.get("/elements/", tags=["items"], deprecated=True)
-# async def read_elements():
-#     return [{"item_id": "Foo"}]
-
 
 app.include_router(api_router, prefix="/api")

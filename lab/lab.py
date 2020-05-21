@@ -9,11 +9,9 @@ MONGO_DB = "lab"
 MONGO_USER = "lab"
 MONGO_PASS = "lab"
 
-uri = "mongodb://{}:{}@{}:{}/{}".format(
-    MONGO_USER, MONGO_PASS, MONGO_HOST, MONGO_PORT, MONGO_DB
-)
+URI = "mongodb://{}:{}@{}:{}/{}".format(DB_USER, DB_PASS, DB_HOST, DB_PORT, DB_NAME)
 
-conn = MongoClient(uri)
+conn = MongoClient(URI)
 
 try:
     db = conn.lab

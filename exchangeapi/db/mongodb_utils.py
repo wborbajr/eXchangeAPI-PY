@@ -1,6 +1,8 @@
 import logging
 
 from motor.motor_asyncio import AsyncIOMotorClient
+
+# from pymongo import MongoClient
 from dynaconf import settings
 
 from exchangeapi.db.mongodb import db
@@ -20,6 +22,10 @@ async def connect_to_mongo():
         maxPoolSize=MAX_CONNECTIONS_COUNT,
         minPoolSize=MIN_CONNECTIONS_COUNT,
     )
+
+    # db.client = MongoClient(MONGODB_URL)
+    # db.client.server_info()
+    # logging.info("db.client.server_info(): {}".format(db.client.server_info()))
     logging.info("Successfully connected to the database！")
 
 

@@ -1,11 +1,20 @@
+import logging
 from fastapi import APIRouter
+
+from exchangeapi.db.mongodb import get_database
+
 
 router = APIRouter()
 
 
 @router.get("/v1/users/", tags=["users"])
 async def read_users():
-    return [{"username": "Foo_v1"}, {"username": "Bar_v1"}]
+    db = get_database()
+    collection = db.items
+    logging.info("get_database(): {}".format(db))
+
+    records_fetched = collection.find()
+    return records_fetched
 
 
 @router.get("/v1/users/me", tags=["users"])
